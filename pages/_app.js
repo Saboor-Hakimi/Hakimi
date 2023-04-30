@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PrismicLink, PrismicProvider } from "@prismicio/react";
 import { PrismicPreview } from "@prismicio/next";
+import Script from "next/script";
 
 import { repositoryName } from "../prismicio";
 import { Heading } from "../components/Heading";
@@ -60,6 +61,8 @@ export default function App({ Component, pageProps }) {
             internalLinkComponent={(props) => <Link {...props} />}
             richTextComponents={richTextComponents}
         >
+            {/* add a header script */}
+            {/* Header */}
             {/* TODO: Remove the following element once you have read the documentation. */}
             {process.env.NODE_ENV === "development" && (
                 //       <div
@@ -88,6 +91,8 @@ export default function App({ Component, pageProps }) {
                 <div></div>
             )}
             <PrismicPreview repositoryName={repositoryName}>
+                <Script src="//embed.typeform.com/next/embed.js"></Script>
+
                 <Component {...pageProps} />
             </PrismicPreview>
         </PrismicProvider>
